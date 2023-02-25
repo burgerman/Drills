@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wil.practice.mapper.StaffMapper">
+    <resultMap id="staffResultMap" type="com.wil.practice.bean.StaffEntity">
+        <id property="usrId" column="USER_ID"></id>
+        <result property="department" column="DEPT"></result>
+        <result property="post" column="POST"></result>
+        <result property="year" column="YEAR"></result>
+        <result property="sum" column="SUM"></result>
+
+        <collection property="staffLedger" column="USER_ID" ofType="com.wil.practice.bean.SalaryEntity">
+            <id property="recordId" column="RECORD_ID"></id>
+            <result property="time" column="TIME"></result>
+            <result property="amount" column="AMOUNT"></result>
+        </collection>
+    </resultMap>
+
+    <select id="retrieveInfo" parameterType="String" resultMap="staffResultMap">
+        SELECT u.DEPT, u.POST, u.YEAR, u.SUM, s.RECORD_ID, s.TIME, s.AMOUNT FROM TB_STAFF u, TB_SALARY s WHERE u.USER_ID = s.USER_ID AND u.USER_ID = #{usrId}
+    </select>
+    <insert id="saveInfo" parameterType="com.wil.practice.bean.StaffEntity">
+
+    </insert>
+</mapper>
