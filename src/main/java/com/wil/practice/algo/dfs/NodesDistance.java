@@ -1,6 +1,8 @@
 package com.wil.practice.algo.dfs;
 
+import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -50,7 +52,7 @@ public class NodesDistance {
             return 0;
         }
 
-        Pair<Integer, Integer> pair = Pair.of(n1, n2);
+        Pair<Integer, Integer> pair = new ImmutablePair(n1, n2);
         if(memo.containsKey(pair)) {
             return memo.get(pair);
         }
@@ -121,5 +123,41 @@ class TreeNode {
 
     public void setRight(TreeNode right) {
         this.right = right;
+    }
+}
+
+final class MyImmutablePair<L, R> implements Map.Entry<L, R> {
+    public final L left;
+    public final R right;
+
+    public MyImmutablePair(L left, R right) {
+        this.left = left;
+        this.right = right;
+    }
+
+    public static <L, R> MyImmutablePair<L, R> of(L left, R right) {
+        return new MyImmutablePair(left, right);
+    }
+    public L getLeft() {
+        return this.left;
+    }
+
+    public R getRight() {
+        return this.right;
+    }
+
+    @Override
+    public L getKey() {
+        return this.left;
+    }
+
+    @Override
+    public R getValue() {
+        return this.right;
+    }
+
+    @Override
+    public R setValue(R value) {
+        throw new UnsupportedOperationException();
     }
 }

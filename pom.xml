@@ -120,6 +120,11 @@
             <artifactId>swagger-annotations</artifactId>
             <version>1.6.9</version>
         </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20220924</version>
+        </dependency>
     </dependencies>
 
     <build>

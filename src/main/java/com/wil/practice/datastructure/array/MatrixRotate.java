@@ -38,6 +38,13 @@ public class MatrixRotate {
         return arr;
     }
 
+    /**
+     * Switching rows and columns
+     * Interchange rows and columns of the matrix
+     * @param arr
+     * @param i
+     * @param j
+     */
     public void transposeMatrix(int[][] arr, int i, int j) {
         arr[i][j] = arr[i][j] ^ arr[j][i];
         arr[j][i] = arr[i][j] ^ arr[j][i];
