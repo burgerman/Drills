@@ -52,7 +52,7 @@ abstract class ArrayDrill<E> {
 
         private boolean add(Object[] arr, Object e, Boolean ordered) {
             if(ordered) {
-                for (int i=size; i>=0; i--) {
+                for (int i=size-1; i>=0; i--) {
                     if(i-1>=0 && !arr[i-1].equals(e)) {
                         arr[i] = arr[i-1];
                     } else {
@@ -63,7 +63,7 @@ abstract class ArrayDrill<E> {
                 }
                 return false;
             } else {
-                arr[size] = e;
+                arr[size-1] = e;
                 size++;
                 return true;
             }

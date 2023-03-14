@@ -68,9 +68,7 @@ public class NodesDistance {
         return distance;
     }
 
-
     public static void main(String[] args) {
-
         NodesDistance nodesDistance = new NodesDistance();
         nodesDistance.root = new TreeNode(1);
         nodesDistance.root.left = new TreeNode(2);
@@ -94,7 +92,6 @@ public class NodesDistance {
         nodesDistance2.root = root;
         System.out.println("Distance between 6 and 8 is: " + nodesDistance2.getDistanceByMemoization(nodesDistance2.root, 6, 8) + " using DFS(recursive approach)");
         System.out.println("Distance between 6 and 8 is: " + nodesDistance2.getDistance(nodesDistance2.root, 6, 8) + " using dynamic programming memo");
-
 
     }
 }

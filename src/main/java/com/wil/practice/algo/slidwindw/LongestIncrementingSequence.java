@@ -27,9 +27,7 @@ public class LongestIncrementingSequence {
             if(fast>0 && arr[fast-1]<arr[fast]) {
                 slow = fast-1;
                 while(arr[fast-1]<arr[fast]) {
-                    if (maxCommon< fast-slow) {
-                        maxCommon = fast-slow;
-                    }
+                    maxCommon = fast-slow>maxCommon?fast-slow:maxCommon;
                     fast++;
                 }
                 continue;

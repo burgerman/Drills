@@ -50,7 +50,7 @@ public class AgodaXPPoints {
                 return index1-index2;
             }
         };
-        List<Map.Entry<String, Integer>> resList = xpsMap.entrySet().stream().filter(e->e.getValue()>0).sorted(customizedComparator).collect(Collectors.toList());
+        List<Map.Entry<String, Integer>> resList = xpsMap.entrySet().stream().parallel().filter(e->e.getValue()>0).sorted(customizedComparator).collect(Collectors.toList());
         String[] res = new String[resList.size()];
         StringJoiner sj;
         for(int i = 0; i<res.length; i++) {

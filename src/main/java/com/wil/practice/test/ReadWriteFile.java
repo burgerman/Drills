@@ -1,18 +1,12 @@
 package com.wil.practice.test;
 
-import assignment.meo.entity.Point;
-import sun.nio.ch.DirectBuffer;
-
 import java.io.*;
 import java.nio.ByteBuffer;
-import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
-import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class ReadWriteFile {
 

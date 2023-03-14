@@ -22,6 +22,7 @@ public class ByteDanceRaindropCollector {
         while (left<=right) {
             leftMax = leftMax>arr[left]? leftMax: arr[left];
             rightMax = rightMax>arr[right]? rightMax:arr[right];
+            // 左右最短的一边同当前高度的差即为当前一边最多所盛雨水
             if(leftMax < rightMax) {
                 num += leftMax - arr[left];
                 left++;

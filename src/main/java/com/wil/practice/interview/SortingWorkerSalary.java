@@ -17,11 +17,20 @@ public class SortingWorkerSalary {
         workLedger.add("3, 400");
         workLedger.add("4, 800");
 //        sortSalary(workerList);
+        // Stream Sequentially group by
         workLedger.stream()
                 .collect(Collectors.groupingBy(v->Integer.valueOf(String.valueOf(v.split(",\\s+")[0])),
                         Collectors.summingInt(v->Integer.valueOf(v.split(",\\s+")[1]))))
                 .entrySet().stream()
                 .sorted(Map.Entry.comparingByValue((o1, o2) -> o2-o1))
+                .collect(Collectors.toList())
+                .forEach(System.out::println);
+
+        // Parallel Concurrently group by
+        workLedger.parallelStream().collect(Collectors.groupingByConcurrent(v->Integer.valueOf(String.valueOf(v.split(",\\s+")[0])),
+                Collectors.summingInt(v->Integer.valueOf(v.split(",\\s+")[1]))))
+                .entrySet().stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
                 .collect(Collectors.toList())
                 .forEach(System.out::println);
     }
