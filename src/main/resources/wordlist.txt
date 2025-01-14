@@ -1,0 +1,11 @@
+this
+string
+is
+a
+sequence
+of
+words
+written
+without
+any
+spaces

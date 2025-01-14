@@ -1,4 +1,4 @@
-package com.wil.practice.algo.slidwindw;
+package com.wil.practice.algo.slidingwindow;
 
 public class LongestIncrementingSequence {
 
@@ -20,8 +20,7 @@ public class LongestIncrementingSequence {
     public static int findLongestDualPointer(int[] arr) {
         int len = arr.length;
         int maxCommon =0;
-        int slow =0;
-        int fast =0;
+        int slow =0, fast =0;
 
         while(fast<len) {
             if(fast>0 && arr[fast-1]<arr[fast]) {

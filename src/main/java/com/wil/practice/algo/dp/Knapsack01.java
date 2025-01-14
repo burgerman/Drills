@@ -39,7 +39,7 @@ public class Knapsack01 {
         int[] K = new int[assignedWeight+1];
         for (int i=1; i<=vals.length; i++) {
             for(int w=assignedWeight; w>=0; w--) {
-                if(weights[i-1]<=assignedWeight && w>=weights[i-1]) {
+                if(weights[i-1]<=assignedWeight && weights[i-1]<=w) {
                     K[w] = Math.max(vals[i-1]+K[w-weights[i-1]], K[w]);
                 }
             }

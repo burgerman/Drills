@@ -1,6 +1,5 @@
-package com.wil.practice.algo;
+package com.wil.practice.algo.cp600.strin;
 
-import javax.crypto.spec.PSource;
 import java.util.Scanner;
 
 public class LevenshteinDistance {

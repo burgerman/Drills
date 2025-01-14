@@ -1,4 +1,4 @@
-package com.wil.practice.algo.slidwindw;
+package com.wil.practice.algo.slidingwindow;
 
 import java.util.HashSet;
 

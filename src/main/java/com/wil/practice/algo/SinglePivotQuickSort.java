@@ -24,8 +24,6 @@ public class SinglePivotQuickSort {
             arr[i] = pvt;
             quickSort(arr, low, i -1);
             quickSort(arr, i + 1, high);
-        } else {
-            return;
         }
     }
 

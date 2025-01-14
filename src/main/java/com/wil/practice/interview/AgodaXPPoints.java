@@ -24,18 +24,12 @@ public class AgodaXPPoints {
         for(int i=0; i<xps.length; i++) {
             if(xps[i]<1000) {
                 xpsMap.compute("Recruit", (k,v)->v+=1);
-                continue;
             } else if(xps[i]<5000) {
                 xpsMap.compute("Warrior", (k,v)->v+=1);
-                continue;
             } else if(xps[i]<10000) {
                 xpsMap.compute("Knight", (k,v)->v+=1);
-                continue;
             } else if(xps[i]>9999) {
                 xpsMap.compute("Ninja", (k,v)->v+=1);
-                continue;
-            } else {
-                continue;
             }
         }
         xpsMap.forEach((k,v)->System.out.println(k+"-"+v.toString()));

@@ -45,19 +45,24 @@ public class CountAccessibleRoutes {
 
     public int countRoutesDPSolution(int[] locations, int start, int end, int fuel) {
         int m = locations.length;
+        // retain all routes at m with (i) fuel
         int [][] cache = new int[m][fuel+1];
+
+        // initial the num of route at end with 1
         for (int i=0; i<=fuel; i++) {
             cache[end][i] = 1;
         }
+        // cursor: 当前可用油料
         for(int cursor=0; cursor<=fuel; cursor++) {
+            // i: 当前起始位置
             for(int i=0; i<m; i++) {
+                // j: 当前目的地
                 for(int j=0; j<m; j++) {
-                    if(i!=j) {
-                        int cost = Math.abs(locations[i]-locations[j]);
-                        if(cursor>=cost) {
-                            cache[i][cursor] += cache[j][cursor-cost];
-                            cache[i][cursor] %= valMod;
-                        }
+                    int cost = Math.abs(locations[i]-locations[j]);
+                    if(cost>cursor) continue;
+                    else if(i!=j) {
+                        cache[i][cursor] += cache[j][cursor-cost];
+                        cache[i][cursor] %= valMod;
                     }
                 }
             }

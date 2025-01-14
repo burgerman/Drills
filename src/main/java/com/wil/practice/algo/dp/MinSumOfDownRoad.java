@@ -100,6 +100,8 @@ public class MinSumOfDownRoad {
                     }
                 } else {
                     arr[i%2][j] = max;
+                    //相邻数字不能是来自同一列
+                    //由此需要的是前一行的最小和次小值， 通过两个index var来存放其位置
                     if(j!=lastRowMinIndex) {
                         arr[i%2][j] = arr[(i-1)%2][lastRowMinIndex] + val;
                     } else {

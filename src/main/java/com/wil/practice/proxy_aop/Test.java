@@ -1,11 +1,14 @@
 package com.wil.practice.proxy_aop;
 
 import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 
 public class Test {
 
     public String shoot() {
-        return "Hey! Yo man!";
+        String result = "Hey! Yo man!";
+        System.out.println(result);
+        return result;
     }
 
     public static void main(String[] args) {
@@ -25,6 +28,12 @@ public class Test {
             throwable.printStackTrace();
         }
 
+        // JDK Proxy
+        Class[] interfaces = {MyInterface.class};
+        MyInterface myInterface = new MyInterfaceImpl();
+        //Pass principal(被代理) object into
+        MyInterface proxyInstance = (MyInterface) Proxy.newProxyInstance(Test.class.getClassLoader(), interfaces, new JDKProxyFactory(myInterface));
+        String result = proxyInstance.doTest("Email","Account");
         // Test get all declared methods of the class by JDK reflection
         try {
             Class cl = Class.forName(Test.class.getName());

@@ -26,10 +26,8 @@ public class EggDropDp {
             for(int j=1; j<=floor; j++){
                 if(j==1) {
                     dp[i][j] = 1;
-                    continue;
                 } else if(i==1) {
                     dp[i][j] = j;
-                    continue;
                 } else {
                     dp[i][j] =res;
                     for(int x = 1; x<=j; x++) {
@@ -43,11 +41,15 @@ public class EggDropDp {
 
 
     /**
-     * By given the num of floors and eggs, find out How many times we mostly can drop. Mind shifting-> Assume if now we have i shots for this trial with given num of eggs, how many floors we can deal with? And this leads to an equation: f(trial, egg) = floor;
+     * By given the num of floors and eggs, find out How many times we mostly can drop.
+     * Mind shifting-> Assume if now we have i shots for this trial with given num of eggs,
+     * how many floors we can deal with? And this leads to an equation: f(trial, egg) = floor;
      * We create an array to keep the value of the 'floor'.
      * e.g. 1 shot, 2 eggs -> arr[1][1] = 1; arr[1][2] = 1;
-     * The final answer to the question is how many trials we need if there're 36 floors, which means what we need to find out is the value of variable 'trial' in this linear equation: f(trial, 2) = 36
-     * As only one unknown is there, let's just put numbers starting from 0 and increasing by 1 into this equation one after another, the least number that turns out the value not less than 36 is the solution.
+     * The final answer to the question is how many trials we need if there're 36 floors,
+     * we need to find out the value of variable 'trial' in this linear equation: f(trial, 2) = 36
+     * As only one unknown is there, let's put numbers starting from 0 and increasing by 1 into this equation one after another,
+     * the least number that turns out the value not less than 36 is the solution.
      *
      * Time complexity: O(N*floor)
      * Space complexity: O(N*floor)

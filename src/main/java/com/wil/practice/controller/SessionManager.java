@@ -17,6 +17,7 @@ import java.util.List;
 public class SessionManager {
 
     @Autowired
+    @Resource
     @Qualifier("staffManagementImpl")
     private StaffManagement staffManagement;
 

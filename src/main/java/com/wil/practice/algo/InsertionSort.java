@@ -21,7 +21,7 @@ public class InsertionSort {
         }
     }
 
-    void rangeCheck(int[] arr, int l, int r){
+    private static void rangeCheck(int[] arr, int l, int r){
         if (l > r) {
             throw new IllegalArgumentException(
                     "fromIndex(" + l + ") > toIndex(" + r + ")");
@@ -34,13 +34,13 @@ public class InsertionSort {
         }
     }
 
-    int binarySearch(Integer arr[], int start, int end, int target)
+    private static int binarySearch(int arr[], int start, int end, int target)
     {
         int low = start;
         int high = end - 1;
-
+        int mid;
         while (low <= high) {
-            int mid = low +(high-low) / 2;
+            mid = low +(high-low) / 2;
             if (arr[mid] < target) {
                 low = mid + 1;
             } else if (arr[mid] > target) {
@@ -54,7 +54,7 @@ public class InsertionSort {
     }
 
 
-    int binarySearch2(Integer a[], int item, int low, int high)
+    private static int binarySearch2(int a[], int item, int low, int high)
     {
         while (low <= high) {
             int mid = low + (high - low) / 2;
@@ -70,7 +70,7 @@ public class InsertionSort {
         return low;
     }
 
-    public void binaryInsertionSort(Integer [] arr) {
+    private static void binaryInsertionSort(int [] arr) {
         for (int i = 1; i < arr.length; i++) {
             int j = i -1;
             int current = arr[i];
@@ -88,12 +88,12 @@ public class InsertionSort {
 
     public static void main(String[] args) {
         InsertionSort is = new InsertionSort();
-        Integer [] arr = { 37, 23, 0, 17, 12, 72, 31, 46, 100, 88, 54 };
-        System.out.println(Arrays.binarySearch(arr, 0, arr.length-1, 17));
-        System.out.println(is.binarySearch(arr, 0, arr.length-1, 17));
-        is.binaryInsertionSort(arr);
-        System.out.println(Arrays.deepToString(arr));
-        Arrays.sort(arr);
+        int [] arr = { 5, 2, 9, 1, 5, 6};
+//        System.out.println(Arrays.binarySearch(arr, 0, arr.length-1, 17));
+//        System.out.println(binarySearch(arr, 0, arr.length-1, 17));
+        binaryInsertionSort(arr);
+        System.out.println(Arrays.toString(arr));
+        System.out.println(binarySearch(arr, 0, arr.length-1, 6));
     }
 
 }

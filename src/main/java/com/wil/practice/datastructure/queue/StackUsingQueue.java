@@ -1,12 +1,18 @@
 package com.wil.practice.datastructure.queue;
 
+import java.util.ArrayDeque;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class StackUsingQueue {
-    private Queue queue1 = new LinkedList();
-    private Queue queue2 = new LinkedList();
+    private Queue queue1 = new ArrayDeque();
+    private Queue queue2 = new ArrayDeque();
 
+    /**
+     * 先进后出，在压入元素时永远放入空的queue1,再将queue2中元素压入queue1
+     * 交换queue1和queue2，保证每次push操作后queue1永远为空
+     * @param o
+     */
     public void pushVal(Object o) {
         queue1.offer(o);
         while(queue2.size()>0) {
@@ -17,6 +23,10 @@ public class StackUsingQueue {
         queue2 = tmpQueue;
     }
 
+    /**
+     * 取元素永远从queue2中取
+     * @return
+     */
     public Object popVal() {
         if(queue2.size()>0) {
             return queue2.poll();

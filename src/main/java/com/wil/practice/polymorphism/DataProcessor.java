@@ -9,7 +9,5 @@ public abstract class DataProcessor {
         this.processorType = processorType;
     }
 
-    public String process() {
-        return null;
-    }
+    public abstract String process();
 }

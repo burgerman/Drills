@@ -1,6 +1,5 @@
-package com.wil.practice.algo;
+package com.wil.practice.algo.cp600.strin;
 
-import java.util.LinkedList;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -24,7 +23,8 @@ public class KMPdemo {
     }
 
     private static int kmpSearch(String source, String pattern, int[] table) {
-        for(int i=0, j=0; i<source.length(); i++) {
+        int j =0;
+        for(int i=0; i<source.length(); i++) {
             while(j>0 && source.charAt(i) != pattern.charAt(j)) {
                 j = table[j-1];
             }
@@ -43,7 +43,8 @@ public class KMPdemo {
     private static int[] kmpMatchTable(String source) {
         int[] table = new int[source.length()];
         table[0] = 0;
-        for(int i=1, len=0; i< table.length;i++) {
+        int len=0;
+        for(int i=1; i< table.length;i++) {
             while(len>0 && source.charAt(i) != source.charAt(len)) {
                 len = table[len-1];
             }

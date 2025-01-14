@@ -23,5 +23,13 @@ public class MaxBagsWithFullCapRocks {
         return res;
     }
 
+    public static void main(String[] args) {
+
+        int[] cap = new int[]{1, 5, 3, 6};
+        int[] rocks = new int[]{1, 2, 3, 4};
+        System.out.println(maxBagsWithFullCapacityOfRocks(cap, rocks, 2));
+
+    }
+
 
 }

@@ -4,10 +4,8 @@ import com.wil.practice.annotations.AnnotationUtil;
 import com.wil.practice.annotations.Params;
 
 import java.security.Key;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
+
 @AnnotationUtil(comment = "Binary Search", params = {})
 public class BinarySearch {
 
@@ -26,27 +24,27 @@ public class BinarySearch {
     private Node root;
     private int nodeNum;
 
-    public void preOrder(Node node) {
+    public void preOrder(Node node, List<String> list) {
         if(node != null) {
-            System.out.println(node.key);
-            preOrder(node.left);
-            preOrder(node.right);
+            list.add(node.key);
+            preOrder(node.left, list);
+            preOrder(node.right, list);
         }
     }
 
-    public void inOrder(Node node) {
+    public void inOrder(Node node, List<String> list) {
         if(node!=null) {
-            inOrder(node.left);
-            System.out.println(node.key);
-            inOrder(node.right);
+            inOrder(node.left, list);
+            list.add(node.key);
+            inOrder(node.right, list);
         }
     }
 
-    public void postOrder(Node node) {
+    public void postOrder(Node node, List<String> list) {
         if(node!=null) {
-            postOrder(node.left);
-            postOrder(node.right);
-            System.out.println(node.key);
+            postOrder(node.left, list);
+            postOrder(node.right, list);
+            list.add(node.key);
         }
     }
 
@@ -119,23 +117,28 @@ public class BinarySearch {
 
     public static void main(String[] args) {
         BinarySearch bs = new BinarySearch();
-        bs.insert("1", "p1");
-        bs.insert("3", "p3");
-        bs.insert("5", "p5");
-        bs.insert("4", "p4");
-        bs.insert("7", "p7");
-        bs.insert("2", "p2");
-        bs.insert("6", "p6");
-        bs.insert("8", "p8");
-        bs.preOrder(bs.root);
+        bs.insert("4", "p1");
+        bs.insert("2", "p3");
+        bs.insert("3", "p5");
+        bs.insert("1", "p4");
+        bs.insert("6", "p7");
+        bs.insert("5", "p2");
+        bs.insert("7", "p6");
+        List<String> preOrderList = new ArrayList<>();
+        bs.preOrder(bs.root, preOrderList);
+        preOrderList.forEach(k->System.out.print(k+" "));
+        System.out.println("\n-------------------------------------");
+        List<String> inOrderList = new ArrayList<>();
+        bs.inOrder(bs.root, inOrderList);
+        inOrderList.forEach(k->System.out.print(k+" "));
+        System.out.println("\n-------------------------------------");
+        List<String> postOrderList = new ArrayList<>();
+        bs.postOrder(bs.root, postOrderList);
+        postOrderList.forEach(k->System.out.print(k+" "));
+        System.out.println("\n-------------------------------------");
+//        System.out.println(bs.containNode(bs.root, "5"));
+//        System.out.println(bs.search(bs.root, "5"));
         System.out.println("-------------------------------------");
-        bs.inOrder(bs.root);
-        System.out.println("-------------------------------------");
-        bs.postOrder(bs.root);
-        System.out.println("-------------------------------------");
-        System.out.println(bs.containNode(bs.root, "5"));
-        System.out.println(bs.search(bs.root, "5"));
-        System.out.println("-------------------------------------");
-        bs.levelOrder(bs.root);
+//        bs.levelOrder(bs.root);
     }
 }
