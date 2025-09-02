@@ -4,14 +4,13 @@ import javax.validation.constraints.Max;
 import java.util.Arrays;
 
 public class EggDropDp {
-    private static int[][] dp;
 
     /**
      * dp[k][m] 指 k个鸡蛋，移动m次最多能确定多少层
      *  dp[k][m] 最多确定的楼层数为 F
-     *  选择在i层楼起扔，则从i层起抛，可将F分为3段
-     *  Right: dp[k][m-1] i层起抛的鸡蛋没碎
-     *  Left: dp[k-1][m-1] i层起抛鸡蛋碎了
+     *  选择在x层楼起扔，则从x层起抛，可将F分为3段
+     *  Right: dp[k][m-1] x层起抛的鸡蛋没碎
+     *  Left: dp[k-1][m-1] x层起抛鸡蛋碎了
      *  ith floor
      *  formula: dp[k][m] = max(dp[k-1][m-1], dp[k][m-i]) + 1
      *
@@ -20,7 +19,7 @@ public class EggDropDp {
     private static int eggDropMemo(int floor) {
         int egg = 2;
         int res = Integer.MAX_VALUE;
-        dp = new int[egg+1][floor+1];
+        int[][]  dp = new int[egg+1][floor+1];
 
         for(int i=1; i<=egg; i++) {
             for(int j=1; j<=floor; j++){
@@ -31,7 +30,7 @@ public class EggDropDp {
                 } else {
                     dp[i][j] =res;
                     for(int x = 1; x<=j; x++) {
-                        dp[i][j] = Math.min(Math.max(dp[i-1][x-1],dp[i][j-x])+1, dp[i][j]);
+                        dp[i][j] = Math.min(Math.max(dp[i-1][x-1], dp[i][j-x])+1, dp[i][j]);
                     }
                 }
             }
@@ -60,7 +59,7 @@ public class EggDropDp {
     private static int optimizedEggDropMemo(int floor) {
         int n = 2;
         // Store the max times of trials with available moves and eggs
-        dp = new int[floor+1][n+1];
+        int[][] dp = new int[floor+1][n+1];
         int move = 0;
         // Find the least moves that turns out the value not less than 36
         while (dp[move][n] < floor) {

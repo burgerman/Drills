@@ -4,7 +4,7 @@ public class LongestIncrementingSequence {
 
     public int findLongestDynamicProgramming(int[] arr) {
         int len = arr.length;
-        int maxCommon =0;
+        int max =0;
         int[] dp = new int[len];
         for(int i=1; i<len; i++) {
             for(int j=0; j<i; j++) {
@@ -12,28 +12,28 @@ public class LongestIncrementingSequence {
                     dp[i] = Math.max(dp[i], dp[j]+1);
                 }
             }
-            maxCommon = Math.max(maxCommon, dp[i]);
+            max = Math.max(max, dp[i]);
         }
-        return maxCommon;
+        return max;
     }
 
     public static int findLongestDualPointer(int[] arr) {
         int len = arr.length;
-        int maxCommon =0;
+        int max =0;
         int slow =0, fast =0;
 
         while(fast<len) {
             if(fast>0 && arr[fast-1]<arr[fast]) {
                 slow = fast-1;
                 while(arr[fast-1]<arr[fast]) {
-                    maxCommon = fast-slow>maxCommon?fast-slow:maxCommon;
+                    max = fast-slow > max? fast-slow : max;
                     fast++;
                 }
                 continue;
             }
             fast++;
         }
-        return maxCommon+1;
+        return max+1;
     }
 
 

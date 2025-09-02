@@ -36,7 +36,7 @@ public class MonotonicQueue496 {
         for(int i =0; i<nums2.length; i++) {
             dict.put(nums2[i], i);
         }
-        List<Map.Entry> list =dict.entrySet().stream().sorted((Comparator.comparingInt(Map.Entry::getValue))).collect(Collectors.toList());
+        List<Map.Entry> list =dict.entrySet().stream().sorted(Comparator.comparingInt(Map.Entry::getValue)).collect(Collectors.toList());
         outer: for(int j=0; j<nums1.length; j++) {
             int index;
             int next;

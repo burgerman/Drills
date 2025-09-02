@@ -2,6 +2,7 @@ package com.wil.practice.datastructure.array;
 
 import java.util.ArrayDeque;
 import java.util.Arrays;
+import java.util.Deque;
 import java.util.Stack;
 
 public class CircularArray {
@@ -12,7 +13,7 @@ public class CircularArray {
         int[] res = new int[size];
         Arrays.fill(res, -1);
         // 记录当前非最大数的索引
-        ArrayDeque<Integer> stack = new ArrayDeque<>();
+        Deque<Integer> stack = new ArrayDeque<>();
         //假设将数组扩展为原来的2倍
         for(int i = 0; i<2*size-1; i++) {
             // 对i进行取模计算还原为原数组索引

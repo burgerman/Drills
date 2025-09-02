@@ -90,7 +90,7 @@ public class MinFavour {
                 tmpMinFavour = Math.min(tmpMinFavour, getSum(tmpPartition.get(i)));
                 res.add(new ArrayList<>(tmpPartition.get(i)));
             }
-            if (tmpMinFavour>= lowBound && tmpMinFavour <= upBound) {
+            if (tmpMinFavour> lowBound && tmpMinFavour <= upBound) {
                 partitions.add(res);
             }
             return;

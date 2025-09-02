@@ -1,4 +1,4 @@
-package com.wil.practice.algo;
+package com.wil.practice.algo.cp600.backtracking;
 
 public class LowestCommonAncestor {
 
@@ -21,13 +21,17 @@ public class LowestCommonAncestor {
     }
 
     public static TreeNode commonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        if (p.val < root.val && root.val > q.val) {
-            return commonAncestor(root.getLeft(), p, q);
+        if (root == null) return null;
+        if (root == p || root == q) return root;
+        TreeNode left = commonAncestor(root.left, p, q);
+        TreeNode right = commonAncestor(root.right, p, q);
+        if (left != null && right != null) {
+            return root;
+        } else if (left != null) {
+            return left;
+        } else {
+            return right;
         }
-        if(p.val>root.val && q.val>root.val) {
-            return commonAncestor(root.getRight(), p, q);
-        }
-        return root;
     }
 
 

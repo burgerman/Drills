@@ -74,6 +74,5 @@ public class Search2DMatrix {
                 {21,22,23,24,25}
         };
         System.out.println(searchMatrix(matrix, 20));
-
     }
 }

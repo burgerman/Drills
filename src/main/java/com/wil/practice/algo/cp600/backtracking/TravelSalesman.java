@@ -495,18 +495,19 @@ public class TravelSalesman {
             queueMin.addAll(edges.get(i));
             Edge eMax = queueMax.poll();
             Edge eMin = queueMin.poll();
+            visited1[i]=true;
+            visited2[i]=true;
+
             if (visited1[eMax.v]) {
                 while (!queueMax.isEmpty()) {
                     eMax = queueMax.poll();
                     if(!visited1[eMax.v]) {
                         max+=eMax.weight;
-                        visited1[i]=true;
                         break;
                     }
                 }
             } else {
                 max+=eMax.weight;
-                visited1[i]=true;
             }
 
             if (visited2[eMin.v]) {
@@ -514,13 +515,11 @@ public class TravelSalesman {
                     eMin = queueMin.poll();
                     if(!visited2[eMin.v]) {
                         min+=eMin.weight;
-                        visited2[i]=true;
                         break;
                     }
                 }
             } else {
                 min+=eMin.weight;
-                visited2[i]=true;
             }
         }
         min += minBackEdge;

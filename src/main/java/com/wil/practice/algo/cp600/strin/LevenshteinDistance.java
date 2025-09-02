@@ -2,6 +2,9 @@ package com.wil.practice.algo.cp600.strin;
 
 import java.util.Scanner;
 
+/**
+ * Edit Distance
+ */
 public class LevenshteinDistance {
 
     public static void main(String[] args) {
@@ -50,6 +53,7 @@ public class LevenshteinDistance {
     //Memoization
     private static int bottomUp(CharSequence source, CharSequence target) {
         int m = source.length(), n = target.length();
+        if (m>n) return bottomUp(target, source);
         int[][] dp = new int[m+1][n+1];
         //Base case
         //when target is empty

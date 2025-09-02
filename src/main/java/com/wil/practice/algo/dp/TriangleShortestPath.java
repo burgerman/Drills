@@ -3,6 +3,8 @@ package com.wil.practice.algo.dp;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class TriangleShortestPath {
     public static int minimumTotal(List<List<Integer>>triangle) {
@@ -63,10 +65,10 @@ public class TriangleShortestPath {
     }
 
     public static void main(String[] args) {
-        Integer[][]arr = {{-1},{2,3},{1,-1,-3}};
+        int[][]arr = {{-1},{2,3},{1,-1,-3}};
         List<List<Integer>> list = new ArrayList<>();
-        for (Integer[] row: arr) {
-            list.add(Arrays.asList(row));
+        for (int[] row: arr) {
+            list.add(IntStream.of(row).boxed().collect(Collectors.toList()));
         }
         System.out.println(minimumTotal2(list));
         System.out.println(list);

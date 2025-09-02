@@ -11,11 +11,11 @@ public class RegexMatching {
         // allow empty match in s
         for (int j = 1; j < state[0].length; j++) {
             if (p.charAt(j - 1) == '*') {
-                if (state[0][j - 1] || (j > 1 && state[0][j - 2])) {
-                    state[0][j] = true;
-                }
+                // 1 occur or 0 occur
+                state[0][j] = state[0][j - 1] || state[0][j - 2];
             }
         }
+
         for (int i = 1; i < state.length; i++) {
             for (int j = 1; j < state[0].length; j++) {
                 // p matches or p is a '.'
@@ -39,8 +39,12 @@ public class RegexMatching {
 
     public static void main(String[] args) {
         String s = "mississippi";
-        String p = "mis*is*p*.";
+        String p = "mis*is*.p*.";
+
+        String s1 = "aab";
+        String p1 = ".*.";
         System.out.println(isMatch(s, p));
+        System.out.println(isMatch(s1, p1));
     }
 
 }

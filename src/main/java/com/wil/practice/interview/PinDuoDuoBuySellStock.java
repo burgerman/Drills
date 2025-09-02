@@ -43,7 +43,7 @@ public class PinDuoDuoBuySellStock {
                 if(sortFunc.compare(ledger.get(j), ledger.get(k))<0) {
                     Integer boughtPrice = (Integer) ledger.get(j).getValue();
                     Integer soldPrice = (Integer) ledger.get(k).getValue();
-                    maxDiff = soldPrice-boughtPrice>maxDiff?soldPrice-boughtPrice:maxDiff;
+                    maxDiff = Math.max(soldPrice-boughtPrice, maxDiff);
                 }
             }
         }
@@ -53,11 +53,11 @@ public class PinDuoDuoBuySellStock {
 
 
     public static Integer maxYield2(List<Integer> priceHistory) {
-        Integer[] ph = (Integer[]) priceHistory.toArray();
+        Object[] ph = priceHistory.toArray();
         List<Integer> buyIn = new ArrayList<>();
         int maxDiff = 0;
         for(int i=0; i<ph.length; i++) {
-            int currentPrice = ph[i];
+            int currentPrice = (int)ph[i];
             if(buyIn.size()<1) {
                 buyIn.add(currentPrice);
                 continue;
@@ -68,7 +68,7 @@ public class PinDuoDuoBuySellStock {
 //                buyIn = insertionSort(buyIn);
                 // Default - applying TimSort Algo
                 buyIn.sort(Comparator.naturalOrder());
-                maxDiff = (currentPrice-buyIn.get(0)) > maxDiff? (currentPrice-buyIn.get(0)):maxDiff;
+                maxDiff = Math.max(currentPrice-buyIn.get(0), maxDiff) ;
                 buyIn.add(currentPrice);
             }
         }
@@ -106,7 +106,7 @@ public class PinDuoDuoBuySellStock {
         ad.sort(Comparator.naturalOrder());
         for(int i=0; i<ad.size(); i++) {
             for(int j=i+1; j<ad.size(); j++){
-                maxProfit = priceHistory.get(j)-priceHistory.get(i)>maxProfit? priceHistory.get(j)-priceHistory.get(i):maxProfit;
+                maxProfit = Math.max(priceHistory.get(j)-priceHistory.get(i), maxProfit);
             }
         }
         return maxProfit;

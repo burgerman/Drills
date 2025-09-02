@@ -7,12 +7,13 @@ public class LongestPalindromSubString {
 
     public static void main(String[] args) {
 
-        String s = "babad";
+        String s = "baaad";
         int n = s.length();
         boolean dp[][] = new boolean[n][n];
         int p1=0, p2=0;
         int maxLen = 1;
         for (int i = 0; i < n; i++) {
+            // single character itself is the smallest palindrome
             dp[i][i] = true; // expanding from middle
             for(int j = 0; j < i; j++) {
                 if(s.charAt(j) == s.charAt(i)) {
@@ -30,7 +31,6 @@ public class LongestPalindromSubString {
             }
         }
         System.out.println(s.substring(p1, p2+1));
-
     }
 
 
