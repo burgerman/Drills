@@ -7,7 +7,7 @@ public class MaxSubarraySum {
      * KEY INSIGHT: We're looking for subarrays that MUST include elements from both sides.
      * The crossing subarray must be contiguous and include the midpoint boundary.
      */
-    public static int crossSubArrSum(int left, int mid, int right, int[] nums) {
+    private static int crossSubArrSum(int left, int mid, int right, int[] nums) {
         int leftSum = Integer.MIN_VALUE;
         int rightSum = Integer.MIN_VALUE;
         int tmpSum = 0;
@@ -26,7 +26,7 @@ public class MaxSubarraySum {
     }
 
 
-    public static int maxSubArrSum(int left, int right, int[] nums) {
+    private static int maxSubArrSum(int left, int right, int[] nums) {
         if(left == right) {
             return nums[left];
         }
@@ -37,7 +37,7 @@ public class MaxSubarraySum {
         return Math.max(Math.max(leftSubMax, rightSubMax), crossSubMax);
     }
 
-    public static int maxSubarraySumDivideConquer(int[] nums) {
+    private static int maxSubarraySumDivideConquer(int[] nums) {
         if (nums == null || nums.length == 0) {
             throw new IllegalArgumentException("Input array cannot be null or empty");
         }
@@ -45,11 +45,24 @@ public class MaxSubarraySum {
 
     }
 
+
+    private static int kadaneSolution(int[] nums) {
+        int maxSum = nums[0];
+        int currentMaxSum = nums[0];
+        for(int i =1; i<nums.length; i++) {
+            currentMaxSum = Math.max(currentMaxSum+nums[i], nums[i]);
+            maxSum = Math.max(currentMaxSum, maxSum);
+        }
+        return maxSum;
+    }
+
+
     public static void main(String[] args) {
         int[] arr = new int[] {-2, 1, -3, 4, -1, 2, 1, -5, 4};
         int maxSubSum = maxSubarraySumDivideConquer(arr);
         System.out.printf("Max Sum of Subarray: %d%n", maxSubSum);
 
+        System.out.printf("Max Sum of Subarray Using Kadane's algo: %d%n", kadaneSolution(arr));
     }
 
 }

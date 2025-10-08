@@ -14,10 +14,7 @@ public class CrossBorder {
 
         for(int i=0; i<m; i++) {
             for(int j =0; j<n; j++) {
-                if(i==0) {add(i, j, paths);}
-                if(i==m-1) {add(i, j, paths);}
-                if(j==0) {add(i, j, paths);}
-                if(j==n-1) {add(i, j, paths);}
+                if(i==0 || i==m-1 || j==0 || j==n-1) add(i, j, paths);
             }
         }
 
