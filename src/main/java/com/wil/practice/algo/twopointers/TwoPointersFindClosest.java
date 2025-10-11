@@ -1,4 +1,4 @@
-package com.wil.practice.algo;
+package com.wil.practice.algo.twopointers;
 
 import java.util.Arrays;
 
