@@ -7,7 +7,7 @@ public class MaxProfit {
      * @param prices
      * @return
      */
-    public static int bestBuyAndSellStockIII(int[] prices) {
+    private static int bestBuyAndSellStockIII(int[] prices) {
         if (prices == null || prices.length < 2) {
             return 0;
         }
@@ -31,12 +31,30 @@ public class MaxProfit {
         return sell2;
     }
 
+    private static int bestBuySellStockWithFee(int[] prices, int fee) {
+        if (prices == null || prices.length < 2) {
+            return 0;
+        }
+        //base case for buy: - price[0], base case for sell: 0
+        int buy1 = - prices[0], sell1 = 0;
+        // max profit can be made by selling on any day
+        //assuming that the transactions are on separate days
+        for (int price : prices) {
+            //get min cost of buying 1st stock
+            buy1 = Math.max(buy1, sell1-price);
+            //get max profit of selling 1st stock
+            sell1 = Math.max(sell1, buy1 + price - fee);
+        }
+        return sell1;
+    }
+
+
     /**
      * 每天可进行2次买卖
      * @param prices
      * @return
      */
-    public static int DPTabulationIII(int[] prices) {
+    private static int DPTabulationIII(int[] prices) {
         if (prices == null || prices.length < 2) {
             return 0;
         }
@@ -69,16 +87,16 @@ public class MaxProfit {
      * @param k
      * @return
      */
-    public static int DPTabulationIV(int[] prices, int k) {
+    private static int DPTabulationIV(int[] prices, int k) {
         if (prices == null || prices.length < 2) {
             return 0;
         }
         int n = prices.length;
-        // can process at most 2 transactions
+        // can process at most k transactions
 
-        // max profit obtained by completing 2 buy transactions up to and including day n
+        // max profit obtained by completing k buy transactions up to and including day n
         int[][] buy = new int[n][k+1];
-        // max profit obtained by completing 2 sell transactions up to and including day n
+        // max profit obtained by completing k sell transactions up to and including day n
         int[][] sell = new int[n][k+1];
         buy[0][0] = Integer.MIN_VALUE;
         // first day
@@ -102,7 +120,7 @@ public class MaxProfit {
      * @param prices
      * @return
      */
-    public static int maxProfitII(int[] prices) {
+    private static int maxProfitII(int[] prices) {
         if (prices == null || prices.length < 2) {
             return 0;
         }
@@ -126,7 +144,12 @@ public class MaxProfit {
         int[] prices2 = new int[]{3,2,6,5,0,3};
         System.out.println((DPTabulationIV(prices2, 2)));
 
-
+        int[] prices3 = new int[] {1,3,2,8,4,9};
+        int fee = 2;
+        int[] prices4 = new int[] {1,3,7,5,10,3};
+        int fee2 = 3;
+        System.out.printf("%d%n", bestBuySellStockWithFee(prices3, fee));
+        System.out.printf("%d%n", bestBuySellStockWithFee(prices4, fee2));
     }
 
 }
